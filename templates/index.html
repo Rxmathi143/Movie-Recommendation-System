@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Movie Recommendation Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Mathi's movie recommendation engine</p>
+          <h1>Find movies that feel connected, not just popular.</h1>
+          <p>
+            Search a movie, choose a recommendation method, and the Flask
+            backend runs your TF-IDF and cast-crew-genre similarity models.
+          </p>
+        </div>
+        <div class="search-panel">
+          <label for="movieInput">Movie title</label>
+          <div class="search-row">
+            <input
+              id="movieInput"
+              list="movieOptions"
+              placeholder="Try The Dark Knight Rises"
+              autocomplete="off"
+            />
+            <button id="recommendButton">Recommend</button>
+          </div>
+          <datalist id="movieOptions"></datalist>
+          <div class="mode-row" aria-label="Recommendation mode">
+            <button class="mode active" data-mode="features">
+              Cast + crew
+            </button>
+            <button class="mode" data-mode="overview">Story</button>
+          </div>
+          <p id="statusText" class="status">Loading movie data...</p>
+        </div>
+      </section>
+
+      <section class="results-section">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">Recommendations</p>
+            <h2 id="resultsTitle">Start with a movie you like</h2>
+          </div>
+        </div>
+        <div id="recommendations" class="movie-grid"></div>
+      </section>
+
+      <section class="dashboard">
+        <div class="chart-panel">
+          <div class="section-title">
+            <div>
+              <p class="eyebrow">Popularity</p>
+              <h2>Most popular movies</h2>
+            </div>
+          </div>
+          <div id="popularChart" class="bar-chart"></div>
+        </div>
+        <div class="chart-panel">
+          <div class="section-title">
+            <div>
+              <p class="eyebrow">Weighted rating</p>
+              <h2>Best scored movies</h2>
+            </div>
+          </div>
+          <div id="topRated" class="rank-list"></div>
+        </div>
+      </section>
+      <footer class="footer">
+        <div class="footer-content">
+          <div class="owner-section">
+            <img
+              src="{{ url_for('static', filename='images/20260103_175625.jpg') }}"
+              alt="Mathivishnu"
+              class="profile-pic"
+            />
+
+            <div>
+              <h3>Owned & Developed by Mathivishnu</h3>
+              <p>
+                Python Developer • AI Enthusiast • Movie Recommendation System
+              </p>
+            </div>
+          </div>
+
+          <div class="footer-links">
+            <a href="tel:+916369735747">📞 +91 6369735747</a>
+
+            <a href="mailto:mathivishnucena@gmail.com">
+              📧 mathivishnucena@gmail.com
+            </a>
+
+            <a href="https://www.linkedin.com/in/mathivishnu" target="_blank">
+              LinkedIn
+            </a>
+
+            <a href="https://github.com/Rxmathi143" target="_blank"> GitHub </a>
+          </div>
+
+          <p class="copyright">
+            © 2026 Mathi Movie Recommendation Studio. All rights reserved.
+          </p>
+        </div>
+      </footer>
+    </main>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>
